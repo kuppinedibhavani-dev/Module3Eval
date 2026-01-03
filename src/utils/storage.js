@@ -1,4 +1,4 @@
-const KEY="EVAL_DATA";
+const KEY="evalDATA";
 export const getRestaurants=()=>{
     return JSON.parse(localStorage.getItem(KEY))||[];
 };
