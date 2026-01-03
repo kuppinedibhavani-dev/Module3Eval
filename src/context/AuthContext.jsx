@@ -1,4 +1,4 @@
-import {createContext,useContext,useState}from "react";
+import {createContext,useState}from "react";
 const AuthContext=createContext(null);
 const users=[
     {role:"admin",email:"admin@gmail.com",password:"admin1234"},
@@ -27,4 +27,3 @@ export const AuthProvider=({children})=>{
         </AuthContext.Provider>
     );
 }
-export const useAuth=()=>useContext(AuthContext);

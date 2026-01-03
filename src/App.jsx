@@ -1,9 +1,9 @@
 import{Routes,Route}from "react-router-dom";
-import Login from "./pages/Login";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import CustomerDashboard from "./pages/customer/CustomerDashboard";
+import Login from "./pages/Login.Jsx";
+import AdminDashboard from "./pages/admin/AdminDashboard.Jsx";
+import CustomerDashboard from "./pages/customer/CustomerDashboard.Jsx";
 import UpdateRestaurant from "./pages/admin/UpdateRestaurant";
-import ProtectedRoute from "./routes/ProtectedRoute";
+import ProtectedRoute from "./routes/ProtectedRoute.Jsx";
 function App(){
   return(
     <Routes>

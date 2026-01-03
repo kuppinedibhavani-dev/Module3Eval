@@ -1,5 +1,5 @@
 import {useEffect,useState}from "react";
-import{useAuth}from "../../context/AuthContext";
+import{useAuth}from "../context/AuthContext";
 import { getRestaurants } from "../../utils/storage";
 import RestaurantList from "../../components/RestaurantList";
 
@@ -8,7 +8,7 @@ const CustomerDashboard=()=>{
     const[restaurants,setRestaurants]=useState([]);
     useEffect(()=>{
         const data=getRestaurants()||[];
-        setRestaurants(data);
+        setRestaurants(prev=>(prev.length===0?data:prev));
     },[]);
     if(!user){
         return<p>Loading...</p>

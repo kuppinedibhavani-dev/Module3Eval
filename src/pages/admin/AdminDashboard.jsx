@@ -1,13 +1,13 @@
 import{useEffect,useState,useRef}from "react";
-import { getRestaurants,saveRestuarants } from "../../utils/storage";
+import { getRestaurants,saveRestaurants } from "../../utils/storage";
 import RestaurantForm from "../../components/RestaurantForm";
 import RestaurantList from "../../components/RestaurantList";
 const AdminDashboard=()=>{
     const[data,setData]=useState([]);
     const searchRef=useRef();
     useEffect(()=>{
-        setData(getRestaurants());
-        searchRef.current.focus();
+        const restaurants=getRestaurants();
+        setData((prev)=>(prev.length===0?restaurants:prev));
     },[]);
     const addRestaurant=(form)=>{
         const newData=[
@@ -18,14 +18,14 @@ const AdminDashboard=()=>{
                 parking:form.parking==="true",
             },
         ];
-        saveRestuarants(newData);
+        saveRestaurants(newData);
         setData(newData);
         alert("Restaurant Added");
     };
     const deleteRestaurant=(id)=>{
         if(!window.confirm("Are you sure you want to delete?"))return;
         const newData=data.filter((r)=>r.id !==id);
-        saveRestuarants(newData);
+        saveRestaurants(newData);
         setData(newData);
         alert("Deleted successfully");
     };
