@@ -1,5 +1,5 @@
 import {createContext,useContext,useState}from "react";
-const AuthContext=createContext();
+const AuthContext=createContext(null);
 const users=[
     {role:"admin",email:"admin@gmail.com",password:"admin1234"},
     {role:"customer",email:"customer@gmail.com",password:"customer1234"},
@@ -9,13 +9,13 @@ export const AuthProvider=({children})=>{
         JSON.parse(localStorage.getItem("USER"))||null
     );
     const login=(email,password)=>{
-        const found=users.find(
+        const foundUser=users.find(
             (u)=>u.email===email&&u.password===password
         );
-        if(!found)return false;
-        localStorage.setItem("USER",JSON,stringify(found));
-        setUser(found);
-        return found;
+        if(!foundUser)return null;
+        localStorage.setItem("USER",JSON,stringify(foundUser));
+        setUser(foundUser);
+        return foundUser;
     };
     const logout=()=>{
         localStorage.removeItem("USER");
@@ -27,4 +27,6 @@ export const AuthProvider=({children})=>{
         </AuthContext.Provider>
     );
 }
-const useAuth=()=>useContext(AuthContext);
+export const useAuth=()=>{
+    return useContext(AuthContext);
+};
