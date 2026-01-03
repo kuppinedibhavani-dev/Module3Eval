@@ -13,7 +13,7 @@ export const AuthProvider=({children})=>{
             (u)=>u.email===email&&u.password===password
         );
         if(!foundUser)return null;
-        localStorage.setItem("USER",JSON,stringify(foundUser));
+        localStorage.setItem("USER",JSON.stringify(foundUser));
         setUser(foundUser);
         return foundUser;
     };
@@ -27,6 +27,4 @@ export const AuthProvider=({children})=>{
         </AuthContext.Provider>
     );
 }
-export const useAuth=()=>{
-    return useContext(AuthContext);
-};
+export const useAuth=()=>useContext(AuthContext);
